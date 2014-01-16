@@ -1,45 +1,46 @@
-nginx Cookbook
+nginx + ngx_pagespeed Cookbook
 ==============
-TODO: Enter the cookbook description here.
+* Ubuntu 12.04
+* nginx 1.4.4
+* ngx_pagespeed-1.7.30.2-beta
 
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
-
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - nginx needs toaster to brown your bagel.
-
-Attributes
-----------
-TODO: List you cookbook attributes here.
-
-e.g.
-#### nginx::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['nginx']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+this cookbook build nginx with the following command
+```
+  ./configure --prefix=/etc/nginx \
+  --conf-path=/etc/nginx/nginx.conf \
+  --error-log-path=/var/log/nginx/error.log \
+  --http-client-body-temp-path=/var/lib/nginx/body \
+  --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
+  --http-log-path=/var/log/nginx/access.log \
+  --http-proxy-temp-path=/var/lib/nginx/proxy \
+  --http-scgi-temp-path=/var/lib/nginx/scgi \
+  --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+  --lock-path=/var/lock/nginx.lock \
+  --pid-path=/var/run/nginx.pid \
+  --with-debug \
+  --with-http_addition_module \
+  --with-http_dav_module \
+  --with-http_geoip_module \
+  --with-http_gzip_static_module \
+  --with-http_image_filter_module \
+  --with-http_realip_module \
+  --with-http_stub_status_module \
+  --with-http_ssl_module \
+  --with-http_sub_module \
+  --with-http_xslt_module \
+  --with-ipv6 \
+  --with-sha1=/usr/include/openssl \
+  --with-md5=/usr/include/openssl \
+  --with-mail \
+  --with-mail_ssl_module \
+  --add-module=/usr/share/nginx/ngx_pagespeed-1.7.30.2-beta
+  make
+  make install
+```
 
 Usage
 -----
 #### nginx::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
 Just include `nginx` in your node's `run_list`:
 
 ```json
@@ -50,19 +51,3 @@ Just include `nginx` in your node's `run_list`:
   ]
 }
 ```
-
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write you change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
-License and Authors
--------------------
-Authors: TODO: List authors
